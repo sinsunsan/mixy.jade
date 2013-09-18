@@ -1,0 +1,12 @@
+//- Individual icon
+mixin icon(iconClass)
+  span(class='icon #{iconClass}')
+
+//- Suite of icons 
+mixin icons(iconClasses)
+  - for (var i = 0; i < iconClasses.length; ++i) {
+      - var iconClass = iconClasses[i];
+      - if  (i == 0) { iconClass += ' first'} 
+      - if  (i == (iconClasses.length - 1)) { iconClass += ' last'} 
+    +icon(iconClass)
+  -}

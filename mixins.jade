@@ -26,5 +26,14 @@ mixin list(data, ulClass, liClass)
       li(class='#{liClass}')
   - }
   
-
+mixin placeHolderImg(data)
+  - if (undefined == data) { data = {}; }
+  - if (undefined == data.imgWidth) { data.imgWidth = '300'; }
+  - if (undefined == data.imgFormat) { data.imgFormat = '4:3'; }
+  - if (undefined == data.bkColor) { data.bkColor = 'EEEEEE'; }
+  - if (undefined == data.txColor) { data.txColor = 'CCCCCC'; }
+  - if (undefined == data.service) { data.url = 'http://dummyimage.com/'; }
+  - if (undefined == data.imgClasses) {  data.imgClasses = ''; }
   
+  - url = data.url + data.imgWidth + 'x' + data.imgFormat + '/' + data.bkColor + '/' + data.txColor;
+  img(src="#{url}", class="#{data.imgClasses}")

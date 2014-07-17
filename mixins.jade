@@ -37,3 +37,14 @@ mixin placeHolderImg(data)
   
   - url = data.url + data.imgWidth + 'x' + data.imgFormat + '/' + data.bkColor + '/' + data.txColor;
   img(src="#{url}", class="#{data.imgClasses}")
+
+//- https://github.com/sinsunsan/archiref_wiki/wiki/jade-recipes
+//- https://github.com/visionmedia/jade/issues/833
+mixin json()
+  - var oldbuf = buf; buf = [];
+  block
+  - var res = JSON.stringify(JSON.parse(buf.join('')));
+  - buf = oldbuf;
+  != res
+
+

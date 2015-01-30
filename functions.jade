@@ -1,8 +1,11 @@
-- // received the html properties attributes
-- var setPropData = function(configObject) {
+- var setPropData = function(config) {
+- 	var config = config || {};
 - 	var data = {};
-- 	data.value = configObject.value || '';
-- 	data.placeholder = configObject.placeholder || '';
-- 	data.class = configObject.class || '';
+- 	data.value = (config.value) ?  config.value :  '';
+- 	data.placeholder = (config.placeholder) ?  config.placeholder : '';
+- 	data.class = (config.class) ? config.class : '';
+- 	data.ngSubmit = (config.ngSubmit) ? config.ngSubmit : false;
+- 	data.ngClick = (config.ngClick) ? config.ngClick : false;
+- 	data.ngModel = (config.ngModel) ? config.ngModel : false;
 - 	return data
 - } 

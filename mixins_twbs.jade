@@ -1,0 +1,17 @@
+mixin inputText(config)
+	- data = setPropData(config)
+	input(
+		type="text",
+		class="#{data.class} form-control",
+		value="#{data.value}",
+		placeholder= '#{data.placeholder}', 
+		ng-model=config.ngModel
+		)
+
+mixin submitBtn(config)
+	- data = setPropData(config)
+	button(
+		type="submit",
+		class="btn btn-default #{data.class}", 
+		ng-submit=config.ngSubmit, 
+		ng-click=config.ngClick) #{data.value}

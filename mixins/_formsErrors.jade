@@ -1,0 +1,29 @@
+mixin errorMsgInvalid(config)
+  //- pristine mean the user has already touched the input
+  p(ng-show!="#{config.name}.$invalid && !#{config.name}.$pristine", class="help-block")=config.msg
+
+//- err is the angular error form error code
+mixin errorMsgError(config)
+  p(ng-show="#{config.name}.$error.#{config.err}", class="help-block")=config.msg
+
+mixin formGroup(config)
+  //- display error style if one of the field is not valid inside
+  div(class="form-group", ng-class="{ 'has-error' : #{config.name}.$invalid && !#{config.name}.$pristine }")
+    block
+
+//- for each message check the existence of the message data
+//- so one mixins fit all cases !
+//- formName is in the form name
+//- eleName is in the form element name
+//- data holds only the element errors data
+//- errorCode: "message"
+mixin inputErrors(formName, eleName, errors)
+  - var formEleName = formName + '.' + eleName;
+  - if (errors) {
+    if errors.invalid
+      +errorMsgInvalid({name: formEleName, msg: errors.invalid })
+    if errors.maxLength
+      +errorMsgError({name: formEleName, msg: errors.maxLength, err: 'maxlength'})
+    if errors.minLength  
+      +errorMsgError({name: formEleName, msg: errors.minLength, err: 'minlength'})
+  - }

@@ -1,11 +1,18 @@
 - var setPropData = function(config) {
 - 	var config = config || {};
 - 	var data = {};
+//- common html5 attributes
 - 	data.value = (config.value) ?  config.value :  '';
 - 	data.placeholder = (config.placeholder) ?  config.placeholder : '';
 - 	data.class = (config.class) ? config.class : '';
+-   data.name = (config.name) ? config.name : '';
+
+//- angular attributes
 - 	data.ngSubmit = (config.ngSubmit) ? config.ngSubmit : false;
 - 	data.ngClick = (config.ngClick) ? config.ngClick : false;
 - 	data.ngModel = (config.ngModel) ? config.ngModel : false;
+-   data.ngMinlength = (config.ngMinlength) ? config.ngMinlength : false;
+-   data.ngMaxlength = (config.ngMaxlength) ? config.ngMaxlength : false;
+
 - 	return data
 - } 

@@ -1,0 +1,5 @@
+mixin list(data, ulClass, liClass)
+  ul(class='#{ulClass}')
+  - for (var i = 0; i < data.length; ++i) {
+      li(class='#{liClass}')
+  - }
